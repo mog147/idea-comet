@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-space-950: #020617;
+  --color-space-900: #0f172a;
+  --color-space-800: #1e293b;
+  --color-comet: #e2e8f0;
+  --color-comet-dim: #94a3b8;
+  --color-line: #334155;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--color-space-950);
+  color: var(--color-comet);
+  -webkit-font-smoothing: antialiased;
+}
