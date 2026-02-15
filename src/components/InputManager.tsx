@@ -26,21 +26,21 @@ export default function InputManager({ onSubmit, cometCount, onClearAll, driftin
   };
 
   return (
-    <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-md px-6" style={{ bottom: 'calc(12px + env(safe-area-inset-bottom, 0px))' }}>
+    <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-md px-8" style={{ bottom: 'calc(20px + env(safe-area-inset-bottom, 0px))' }}>
       {cometCount > 0 && (
-        <div className="flex items-center justify-between mb-3 px-2">
-          <span className="text-xs text-comet-dim/50">{cometCount} comets</span>
-          <div className="flex items-center gap-4">
+        <div className="flex items-center justify-between mb-4 px-1">
+          <span className="text-[11px] text-comet-dim/35 tracking-wide">{cometCount} comets</span>
+          <div className="flex items-center gap-5">
             <button
               onClick={onToggleDrift}
-              className="text-xs text-comet-dim/30 hover:text-comet-dim/60 transition-colors flex items-center gap-1"
+              className="text-[11px] text-comet-dim/25 hover:text-comet-dim/50 transition-colors flex items-center gap-1.5"
             >
               {drifting ? <Wind size={10} /> : <Anchor size={10} />}
               {drifting ? 'drifting' : 'pinned'}
             </button>
             <button
               onClick={onClearAll}
-              className="text-xs text-comet-dim/30 hover:text-comet-dim/60 transition-colors flex items-center gap-1"
+              className="text-[11px] text-comet-dim/25 hover:text-comet-dim/50 transition-colors flex items-center gap-1.5"
             >
               <Trash2 size={10} />
               clear
@@ -49,25 +49,25 @@ export default function InputManager({ onSubmit, cometCount, onClearAll, driftin
         </div>
       )}
       {showColors && (
-        <div className="flex items-center justify-center gap-3 mb-3">
+        <div className="flex items-center justify-center gap-4 mb-5">
           {COMET_COLORS.map(c => (
             <button
               key={c.name}
               onClick={() => setSelectedColor(c.value)}
-              className="w-6 h-6 rounded-full transition-transform"
+              className="w-5 h-5 rounded-full transition-all duration-200"
               style={{
                 background: c.value,
-                opacity: selectedColor === c.value ? 1 : 0.3,
-                transform: selectedColor === c.value ? 'scale(1.2)' : 'scale(1)',
-                boxShadow: selectedColor === c.value ? `0 0 8px ${c.value}40` : 'none',
+                opacity: selectedColor === c.value ? 1 : 0.25,
+                transform: selectedColor === c.value ? 'scale(1.3)' : 'scale(1)',
+                boxShadow: selectedColor === c.value ? `0 0 12px ${c.value}30` : 'none',
               }}
             />
           ))}
         </div>
       )}
-      <div className="flex items-center gap-3 bg-space-800/60 backdrop-blur-md border border-white/5 rounded-full px-5 py-3">
-        <button onClick={() => setShowColors(prev => !prev)} className="shrink-0">
-          <Sparkles size={16} style={{ color: selectedColor }} />
+      <div className="flex items-center gap-4 bg-space-800/50 backdrop-blur-md border border-white/[0.04] rounded-full px-6 py-3.5">
+        <button onClick={() => setShowColors(prev => !prev)} className="shrink-0 p-0.5">
+          <Sparkles size={15} style={{ color: selectedColor, opacity: 0.7 }} />
         </button>
         <input
           ref={inputRef}
@@ -76,11 +76,11 @@ export default function InputManager({ onSubmit, cometCount, onClearAll, driftin
           onChange={e => setValue(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && handleSubmit()}
           placeholder="思いつきを放つ..."
-          className="flex-1 bg-transparent outline-none text-sm text-comet placeholder:text-comet-dim/50"
+          className="flex-1 bg-transparent outline-none text-[13px] text-comet placeholder:text-comet-dim/35 tracking-wide"
         />
         {value.trim() && (
-          <button onClick={handleSubmit} className="shrink-0 w-7 h-7 rounded-full bg-comet-dim/20 flex items-center justify-center hover:bg-comet-dim/30 transition-colors">
-            <ArrowUp size={14} className="text-comet" />
+          <button onClick={handleSubmit} className="shrink-0 w-7 h-7 rounded-full bg-comet-dim/15 flex items-center justify-center hover:bg-comet-dim/25 transition-colors">
+            <ArrowUp size={13} className="text-comet/70" />
           </button>
         )}
       </div>

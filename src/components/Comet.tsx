@@ -110,10 +110,10 @@ export default function Comet({ comet, onRemove, onUpdate, onDragEnd }: Props) {
       whileHover={editing ? {} : { scale: 1.05 }}
     >
       <div
-        className="relative px-4 py-2 rounded-2xl bg-space-800/60 backdrop-blur-sm border text-sm max-w-[260px]"
+        className="relative px-5 py-2.5 rounded-2xl bg-space-800/50 backdrop-blur-sm border text-[13px] max-w-[260px] leading-relaxed"
         style={{
           color: comet.color || '#e2e8f0',
-          borderColor: editing ? `${comet.color || '#e2e8f0'}30` : 'rgba(255,255,255,0.05)',
+          borderColor: editing ? `${comet.color || '#e2e8f0'}25` : 'rgba(255,255,255,0.03)',
         }}
       >
         <div className="absolute -inset-1 rounded-2xl blur-md -z-10" style={{ background: `${comet.color || '#e2e8f0'}08` }} />
@@ -132,7 +132,7 @@ export default function Comet({ comet, onRemove, onUpdate, onDragEnd }: Props) {
           <span className="break-words">{comet.text}</span>
         )}
         {showTime && !editing && comet.createdAt && (
-          <div className="text-[10px] text-comet-dim/40 mt-1">{formatTime(comet.createdAt)}</div>
+          <div className="text-[10px] text-comet-dim/30 mt-1.5">{formatTime(comet.createdAt)}</div>
         )}
       </div>
     </motion.div>
