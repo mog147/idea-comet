@@ -40,6 +40,8 @@ function App() {
         y: c.y,
         vx: 0,
         vy: 0,
+        createdAt: c.createdAt,
+        color: c.color,
       }))));
     }, 500);
     return () => clearTimeout(timer);
