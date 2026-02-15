@@ -8,7 +8,7 @@ interface Props {
   comets: CometData[];
   setComets: React.Dispatch<React.SetStateAction<CometData[]>>;
   onRemove: (id: string) => void;
-  onDragEnd: (id: string, x: number, y: number) => void;
+  onDragEnd: (id: string, x: number, y: number, vx?: number, vy?: number) => void;
 }
 
 export default function SpaceCanvas({ comets, setComets, onRemove, onDragEnd }: Props) {

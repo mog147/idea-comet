@@ -53,8 +53,8 @@ function App() {
     setComets(prev => prev.filter(c => c.id !== id));
   }, []);
 
-  const updateComet = useCallback((id: string, x: number, y: number) => {
-    setComets(prev => prev.map(c => c.id === id ? { ...c, x, y, vx: 0, vy: 0 } : c));
+  const updateComet = useCallback((id: string, x: number, y: number, vx = 0, vy = 0) => {
+    setComets(prev => prev.map(c => c.id === id ? { ...c, x, y, vx, vy } : c));
   }, []);
 
   return (

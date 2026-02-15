@@ -5,7 +5,7 @@ import type { CometData } from '../types';
 interface Props {
   comet: CometData;
   onRemove: (id: string) => void;
-  onDragEnd: (id: string, x: number, y: number) => void;
+  onDragEnd: (id: string, x: number, y: number, vx?: number, vy?: number) => void;
 }
 
 export default function Comet({ comet, onRemove, onDragEnd }: Props) {
@@ -38,7 +38,10 @@ export default function Comet({ comet, onRemove, onDragEnd }: Props) {
       onDragStart={() => { isDragging.current = true; cancelMelt(); }}
       onDragEnd={(_, info) => {
         isDragging.current = false;
-        onDragEnd(comet.id, comet.x + info.offset.x, comet.y + info.offset.y);
+        // Give a gentle drift based on drag velocity
+        const vx = Math.max(-1, Math.min(1, info.velocity.x * 0.003));
+        const vy = Math.max(-1, Math.min(1, info.velocity.y * 0.003));
+        onDragEnd(comet.id, comet.x + info.offset.x, comet.y + info.offset.y, vx, vy);
       }}
       onDoubleClick={() => onRemove(comet.id)}
       onPointerDown={startMelt}
