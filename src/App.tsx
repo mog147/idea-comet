@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import type { CometData } from './types';
 import SpaceCanvas from './components/SpaceCanvas';
 import InputManager from './components/InputManager';
+import StarField from './components/StarField';
 
 function App() {
   const [comets, setComets] = useState<CometData[]>([]);
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="w-full h-full relative bg-gradient-to-br from-space-950 via-space-900 to-space-950">
+      <StarField />
       <SpaceCanvas
         comets={comets}
         setComets={setComets}
