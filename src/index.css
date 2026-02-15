@@ -14,7 +14,11 @@
 html, body, #root {
   width: 100%;
   height: 100%;
+  height: 100dvh;
   overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -22,4 +26,6 @@ body {
   background: var(--color-space-950);
   color: var(--color-comet);
   -webkit-font-smoothing: antialiased;
+  position: fixed;
+  width: 100%;
 }

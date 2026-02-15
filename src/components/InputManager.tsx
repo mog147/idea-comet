@@ -19,7 +19,7 @@ export default function InputManager({ onSubmit, cometCount, onClearAll }: Props
   };
 
   return (
-    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-md px-6">
+    <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-md px-6" style={{ bottom: 'calc(8px + env(safe-area-inset-bottom, 0px))' }}>
       {cometCount > 0 && (
         <div className="flex items-center justify-between mb-3 px-2">
           <span className="text-xs text-comet-dim/50">{cometCount} comets</span>
