@@ -43,6 +43,7 @@ function App() {
       y: window.innerHeight / 2 + (Math.random() - 0.5) * 100,
       vx: drifting ? (Math.random() - 0.5) * 0.6 : 0,
       vy: drifting ? (Math.random() - 0.5) * 0.6 : 0,
+      createdAt: new Date().toISOString(),
     };
     setComets(prev => [...prev, comet]);
   }, [drifting]);

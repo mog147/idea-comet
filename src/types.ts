@@ -5,4 +5,5 @@ export interface CometData {
   y: number;
   vx: number;
   vy: number;
+  createdAt?: string;
 }
