@@ -12,7 +12,14 @@ function loadComets(): CometData[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
-    return JSON.parse(raw) as CometData[];
+    const data = JSON.parse(raw) as CometData[];
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    return data.map(c => ({
+      ...c,
+      x: Math.max(20, Math.min(w - 20, c.x)),
+      y: Math.max(40, Math.min(h - 120, c.y)),
+    }));
   } catch {
     return [];
   }
@@ -42,8 +49,8 @@ function App() {
     const comet: CometData = {
       id: crypto.randomUUID(),
       text,
-      x: window.innerWidth / 2 + (Math.random() - 0.5) * 200,
-      y: window.innerHeight / 2 + (Math.random() - 0.5) * 100,
+      x: 40 + Math.random() * (window.innerWidth - 80),
+      y: 80 + Math.random() * (window.innerHeight * 0.55),
       vx: drifting ? (Math.random() - 0.5) * 0.6 : 0,
       vy: drifting ? (Math.random() - 0.5) * 0.6 : 0,
       createdAt: new Date().toISOString(),
