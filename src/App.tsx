@@ -3,6 +3,8 @@ import type { CometData } from './types';
 import SpaceCanvas from './components/SpaceCanvas';
 import InputManager from './components/InputManager';
 import StarField from './components/StarField';
+import ListView from './components/ListView';
+import { List } from 'lucide-react';
 
 const STORAGE_KEY = 'idea-comet-data';
 
@@ -19,6 +21,7 @@ function loadComets(): CometData[] {
 function App() {
   const [comets, setComets] = useState<CometData[]>(loadComets);
   const [drifting, setDrifting] = useState(false);
+  const [listOpen, setListOpen] = useState(false);
 
   // Persist on change (throttled)
   useEffect(() => {
@@ -74,8 +77,13 @@ function App() {
   return (
     <div className="w-full h-full relative bg-gradient-to-br from-space-950 via-space-900 to-space-950">
       <StarField />
-      <header className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-5 pointer-events-none" style={{ paddingTop: 'calc(16px + env(safe-area-inset-top, 0px))' }}>
+      <header className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-5" style={{ paddingTop: 'calc(16px + env(safe-area-inset-top, 0px))' }}>
         <h1 className="text-sm font-light tracking-[0.2em] text-comet-dim/40">IDEA COMET</h1>
+        {comets.length > 0 && (
+          <button onClick={() => setListOpen(true)} className="text-comet-dim/30 hover:text-comet-dim/60 transition-colors">
+            <List size={18} />
+          </button>
+        )}
       </header>
       {comets.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -99,6 +107,9 @@ function App() {
         drifting={drifting}
         onToggleDrift={toggleDrift}
       />
+      {listOpen && (
+        <ListView comets={comets} onClose={() => setListOpen(false)} onRemove={removeComet} />
+      )}
     </div>
   );
 }
