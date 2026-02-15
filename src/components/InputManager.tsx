@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Sparkles, Trash2, Wind, Anchor } from 'lucide-react';
+import { Sparkles, Trash2, Wind, Anchor, ArrowUp } from 'lucide-react';
 import { COMET_COLORS } from '../types';
 
 interface Props {
@@ -78,6 +78,11 @@ export default function InputManager({ onSubmit, cometCount, onClearAll, driftin
           placeholder="思いつきを放つ..."
           className="flex-1 bg-transparent outline-none text-sm text-comet placeholder:text-comet-dim/50"
         />
+        {value.trim() && (
+          <button onClick={handleSubmit} className="shrink-0 w-7 h-7 rounded-full bg-comet-dim/20 flex items-center justify-center hover:bg-comet-dim/30 transition-colors">
+            <ArrowUp size={14} className="text-comet" />
+          </button>
+        )}
       </div>
     </div>
   );
