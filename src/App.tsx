@@ -98,9 +98,13 @@ function App() {
       </header>
       {comets.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="text-center">
-            <p className="text-comet-dim/20 text-sm">思いつきを入力して、宇宙に放とう</p>
-            <p className="text-comet-dim/15 text-xs mt-2">長押しで消す ・ ドラッグで移動</p>
+          <div className="text-center space-y-3">
+            <p className="text-comet-dim/25 text-base font-light">思いつきを宇宙に放とう</p>
+            <div className="text-comet-dim/15 text-xs space-y-1">
+              <p>入力して Enter で追加</p>
+              <p>ドラッグで移動 ・ 長押しで消す</p>
+              <p>ダブルタップで編集</p>
+            </div>
           </div>
         </div>
       )}
