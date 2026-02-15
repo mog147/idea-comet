@@ -90,8 +90,8 @@ function App() {
   return (
     <div className="w-full h-full relative bg-gradient-to-br from-space-950 via-space-900 to-space-950">
       <StarField />
-      <header className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-7" style={{ paddingTop: 'calc(24px + env(safe-area-inset-top, 0px))' }}>
-        <h1 className="text-xs font-light tracking-[0.25em] text-comet-dim/30 uppercase">Idea Comet</h1>
+      <header className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-10" style={{ paddingTop: 'calc(36px + env(safe-area-inset-top, 0px))' }}>
+        <h1 className="text-[10px] font-light tracking-[0.3em] text-comet-dim/25 uppercase">Idea Comet</h1>
         {comets.length > 0 && (
           <button onClick={() => setListOpen(true)} className="text-comet-dim/25 hover:text-comet-dim/50 transition-colors p-2 -m-2">
             <List size={16} />
@@ -100,9 +100,9 @@ function App() {
       </header>
       {comets.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="text-center space-y-5 px-10">
-            <p className="text-comet-dim/20 text-base font-light tracking-wide leading-relaxed">思いつきを宇宙に放とう</p>
-            <div className="text-comet-dim/10 text-[11px] space-y-2 leading-relaxed">
+          <div className="text-center space-y-8 px-12">
+            <p className="text-comet-dim/15 text-[15px] font-extralight tracking-widest leading-loose">思いつきを宇宙に放とう</p>
+            <div className="text-comet-dim/10 text-[11px] space-y-3 leading-loose">
               <p>入力して Enter で追加</p>
               <p>ドラッグで移動 ・ 長押しで消す</p>
               <p>ダブルタップで編集</p>
