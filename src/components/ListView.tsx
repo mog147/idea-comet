@@ -5,6 +5,7 @@ interface Props {
   comets: CometData[];
   onClose: () => void;
   onRemove: (id: string) => void;
+  onUpdate: (id: string, text: string) => void;
 }
 
 function formatTime(iso?: string) {
@@ -13,7 +14,7 @@ function formatTime(iso?: string) {
   return `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
-export default function ListView({ comets, onClose, onRemove }: Props) {
+export default function ListView({ comets, onClose, onRemove, onUpdate }: Props) {
   const sorted = [...comets].sort((a, b) =>
     (b.createdAt || '').localeCompare(a.createdAt || '')
   );
@@ -37,7 +38,13 @@ export default function ListView({ comets, onClose, onRemove }: Props) {
                 className="flex items-start gap-3 py-3 border-b border-white/5 group"
               >
                 <div className="w-2 h-2 rounded-full mt-1.5 shrink-0" style={{ background: c.color || '#e2e8f0' }} />
-                <div className="flex-1 min-w-0">
+                <div
+                  className="flex-1 min-w-0"
+                  onDoubleClick={() => {
+                    const newText = prompt('', c.text);
+                    if (newText !== null && newText.trim()) onUpdate(c.id, newText.trim());
+                  }}
+                >
                   <p className="text-sm text-comet break-words">{c.text}</p>
                   <p className="text-[10px] text-comet-dim/30 mt-1">{formatTime(c.createdAt)}</p>
                 </div>

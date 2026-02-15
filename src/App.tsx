@@ -126,7 +126,7 @@ function App() {
         onToggleDrift={toggleDrift}
       />
       {listOpen && (
-        <ListView comets={comets} onClose={() => setListOpen(false)} onRemove={removeComet} />
+        <ListView comets={comets} onClose={() => setListOpen(false)} onRemove={removeComet} onUpdate={updateCometText} />
       )}
     </div>
   );
