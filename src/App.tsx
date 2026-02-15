@@ -60,6 +60,14 @@ function App() {
   return (
     <div className="w-full h-full relative bg-gradient-to-br from-space-950 via-space-900 to-space-950">
       <StarField />
+      <header className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-5 pt-4 pointer-events-none" style={{ paddingTop: 'calc(16px + env(safe-area-inset-top, 0px))' }}>
+        <h1 className="text-sm font-light tracking-[0.2em] text-comet-dim/40">IDEA COMET</h1>
+      </header>
+      {comets.length === 0 && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <p className="text-comet-dim/20 text-sm">思いつきを入力して、宇宙に放とう</p>
+        </div>
+      )}
       <SpaceCanvas
         comets={comets}
         setComets={setComets}
