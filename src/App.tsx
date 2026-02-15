@@ -36,7 +36,7 @@ function App() {
         onRemove={removeComet}
         onDragEnd={updateComet}
       />
-      <InputManager onSubmit={addComet} />
+      <InputManager onSubmit={addComet} cometCount={comets.length} onClearAll={() => setComets([])} />
     </div>
   );
 }
