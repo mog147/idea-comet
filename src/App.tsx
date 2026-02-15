@@ -35,7 +35,7 @@ function App() {
     return () => clearTimeout(timer);
   }, [comets]);
 
-  const addComet = useCallback((text: string) => {
+  const addComet = useCallback((text: string, color?: string) => {
     const comet: CometData = {
       id: crypto.randomUUID(),
       text,
@@ -44,6 +44,7 @@ function App() {
       vx: drifting ? (Math.random() - 0.5) * 0.6 : 0,
       vy: drifting ? (Math.random() - 0.5) * 0.6 : 0,
       createdAt: new Date().toISOString(),
+      color,
     };
     setComets(prev => [...prev, comet]);
   }, [drifting]);

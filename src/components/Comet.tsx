@@ -89,8 +89,11 @@ export default function Comet({ comet, onRemove, onDragEnd }: Props) {
       }}
       whileHover={{ scale: 1.05 }}
     >
-      <div className="relative px-4 py-2 rounded-2xl bg-space-800/60 backdrop-blur-sm border border-white/5 text-sm text-comet max-w-[260px]">
-        <div className="absolute -inset-1 rounded-2xl bg-comet/5 blur-md -z-10" />
+      <div
+        className="relative px-4 py-2 rounded-2xl bg-space-800/60 backdrop-blur-sm border border-white/5 text-sm max-w-[260px]"
+        style={{ color: comet.color || '#e2e8f0' }}
+      >
+        <div className="absolute -inset-1 rounded-2xl blur-md -z-10" style={{ background: `${comet.color || '#e2e8f0'}08` }} />
         <span className="break-words">{comet.text}</span>
         {showTime && comet.createdAt && (
           <div className="text-[10px] text-comet-dim/40 mt-1">{formatTime(comet.createdAt)}</div>

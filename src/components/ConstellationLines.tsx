@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function ConstellationLines({ comets, threshold = 200 }: Props) {
-  const lines: { key: string; x1: number; y1: number; x2: number; y2: number; opacity: number }[] = [];
+  const lines: { key: string; x1: number; y1: number; x2: number; y2: number; opacity: number; color: string }[] = [];
 
   for (let i = 0; i < comets.length; i++) {
     for (let j = i + 1; j < comets.length; j++) {
@@ -22,6 +22,7 @@ export default function ConstellationLines({ comets, threshold = 200 }: Props) {
           x2: comets[j].x,
           y2: comets[j].y,
           opacity: strength,
+          color: comets[i].color || comets[j].color || '#94a3b8',
         });
       }
     }
@@ -45,7 +46,7 @@ export default function ConstellationLines({ comets, threshold = 200 }: Props) {
           y1={line.y1}
           x2={line.x2}
           y2={line.y2}
-          stroke="#94a3b8"
+          stroke={line.color}
           strokeWidth={line.opacity > 0.6 ? 1 : 0.5}
           filter={line.opacity > 0.6 ? 'url(#glow)' : undefined}
           style={{
