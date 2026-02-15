@@ -59,6 +59,10 @@ function App() {
     setComets(prev => [...prev, comet]);
   }, [drifting]);
 
+  const updateCometText = useCallback((id: string, text: string) => {
+    setComets(prev => prev.map(c => c.id === id ? { ...c, text } : c));
+  }, []);
+
   const removeComet = useCallback((id: string) => {
     setComets(prev => prev.filter(c => c.id !== id));
   }, []);
@@ -104,6 +108,7 @@ function App() {
         comets={comets}
         setComets={setComets}
         onRemove={removeComet}
+        onUpdate={updateCometText}
         onDragEnd={updateComet}
         drifting={drifting}
       />

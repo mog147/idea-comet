@@ -8,11 +8,12 @@ interface Props {
   comets: CometData[];
   setComets: React.Dispatch<React.SetStateAction<CometData[]>>;
   onRemove: (id: string) => void;
+  onUpdate: (id: string, text: string) => void;
   onDragEnd: (id: string, x: number, y: number, vx?: number, vy?: number) => void;
   drifting: boolean;
 }
 
-export default function SpaceCanvas({ comets, setComets, onRemove, onDragEnd, drifting }: Props) {
+export default function SpaceCanvas({ comets, setComets, onRemove, onUpdate, onDragEnd, drifting }: Props) {
   const rafRef = useRef<number>(0);
   const driftingRef = useRef(drifting);
 
@@ -51,7 +52,7 @@ export default function SpaceCanvas({ comets, setComets, onRemove, onDragEnd, dr
       <ConstellationLines comets={comets} />
       <AnimatePresence>
         {comets.map(c => (
-          <Comet key={c.id} comet={c} onRemove={onRemove} onDragEnd={onDragEnd} />
+          <Comet key={c.id} comet={c} onRemove={onRemove} onUpdate={onUpdate} onDragEnd={onDragEnd} />
         ))}
       </AnimatePresence>
     </div>
